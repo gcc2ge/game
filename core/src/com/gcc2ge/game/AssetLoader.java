@@ -37,8 +37,10 @@ public class AssetLoader implements ApplicationListener {
 		   DeskResource desk=new DeskResource();
 		   for(ResourceLocation location:ResourceLocation.values()){
 			   SortedSet<String> sortedSet=desk.getResourcesIn(location.toString());
-			   for(String resource:sortedSet){
-				   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
+			   if(sortedSet!=null){
+				   for(String resource:sortedSet){
+					   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
+				   }
 			   }
 		   }
 		}
