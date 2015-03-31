@@ -29,11 +29,11 @@ public class Sprite {
 	}
 	//get current animation
 	public void createAnimation(){
-		Texture texture=AssetLoader.getSprite(id);
-		TextureRegion[][] textureRegion=TextureRegion.split(texture, width, height);
-		for(Map.Entry<String, AnimationEntity> entry:animations.entrySet()){
-			entry.getValue().createAnimation(textureRegion);
-		}
+//		Texture texture=AssetLoader.getSprite(id);
+//		TextureRegion[][] textureRegion=TextureRegion.split(texture, width, height);
+//		for(Map.Entry<String, AnimationEntity> entry:animations.entrySet()){
+//			entry.getValue().createAnimation(textureRegion);
+//		}
 		
 	}
 	//get hurted animation
