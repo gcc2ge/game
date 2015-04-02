@@ -32,4 +32,10 @@ public class DeskResource extends ResourcePackage {
 			this.addResource(path);
 		}
 	}
+
+	@Override
+	public FileHandle getFileHandle(String resource) {
+		return Gdx.files.internal(resource);
+	}
+	
 }

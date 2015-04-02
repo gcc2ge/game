@@ -1,0 +1,6 @@
+{
+  "Loot"          : "img/mouse/loot.png",
+  "Attack"    : "img/mouse/sword.png",
+  "Talk" : "img/mouse/talk.png",
+  "Move"          : "img/mouse/hand.png",
+}

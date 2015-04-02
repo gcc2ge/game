@@ -1,19 +1,20 @@
 package com.gcc2ge.game;
 
-import java.util.SortedSet;
+import java.util.Set;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.gcc2ge.game.resource.DeskResource;
 import com.gcc2ge.game.resource.FileExtension;
 import com.gcc2ge.game.resource.ResourceLocation;
+import com.gcc2ge.game.resource.ResourceManager;
+import com.gcc2ge.game.resource.ResourceType;
+import com.gcc2ge.game.sprites.SpriteManager;
 
 public class AssetLoader implements ApplicationListener {
 	private static final String TAG =AssetLoader.class.getName();
@@ -29,26 +30,30 @@ public class AssetLoader implements ApplicationListener {
 		
 		manager = new AssetManager();
 		manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+		ResourceManager.registerDesktopResource();
 		//load image
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			///android resource loading
 		} else {
 		  // ApplicationType.Desktop ..
-		   DeskResource desk=new DeskResource();
 		   for(ResourceLocation location:ResourceLocation.values()){
-			   SortedSet<String> sortedSet=desk.getResourcesIn(location.toString());
-			   if(sortedSet!=null){
-				   for(String resource:sortedSet){
-					   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
-				   }
+			   Set<String> sortedSet=ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.PNG);
+			   sortedSet.addAll(ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.TMX));
+			   if(sortedSet==null)continue;
+			   for(String resource:sortedSet){
+				   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
 			   }
 		   }
 		}
 		manager.finishLoading();
 		Gdx.app.log(TAG, "资源加载完成");
 		map=manager.get("maps/map.tmx");
-		
 		//get
+		Set<String> mouse=ResourceManager.getResourceInDirectoryByType("img/mouse", ResourceType.PNG);
+		for(String s:mouse){
+			Texture t=manager.get(s);
+			SpriteManager.addTexture(s, t);
+		}
 
 	}
 	@Override

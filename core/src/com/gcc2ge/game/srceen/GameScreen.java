@@ -3,6 +3,7 @@ package com.gcc2ge.game.srceen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import com.gcc2ge.game.AreaListener;
 import com.gcc2ge.game.AssetLoader;
 import com.gcc2ge.game.MapProcess;
 import com.gcc2ge.game.TileMapRender;
@@ -49,7 +51,8 @@ public class GameScreen implements Screen ,InputProcessor{
 		mapRenderer=new TileMapRender(loader.map,batch);
 		mapCamera=new OrthographicCamera(w/PIX_PER_MERTER,h/PIX_PER_MERTER);
 		//×¢²áÊÂ¼þ
-		Gdx.input.setInputProcessor(this);
+		InputMultiplexer m=new InputMultiplexer(this,new AreaListener()); 
+		Gdx.input.setInputProcessor(m);
 		shapeRender=new ShapeRenderer();
 		firstTime=true;
 		

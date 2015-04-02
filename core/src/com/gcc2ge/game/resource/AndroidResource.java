@@ -30,4 +30,10 @@ public class AndroidResource extends ResourcePackage {
 			addFile(dirHandle.path());
 		}
 	}
+	@Override
+	public FileHandle getFileHandle(String resource) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

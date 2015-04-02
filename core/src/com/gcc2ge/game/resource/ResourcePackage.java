@@ -3,12 +3,14 @@ package com.gcc2ge.game.resource;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.badlogic.gdx.files.FileHandle;
+
 /**
  * 使用libgdx 自带的file管理资源
  * @author Administrator
  *
  */
-public class ResourcePackage {
+public abstract class ResourcePackage {
 	public final TreeSet<String > entries;
 	public ResourcePackage(){
 		this.entries=new TreeSet<String>();
@@ -31,5 +33,5 @@ public class ResourcePackage {
 	public boolean hasResource(String path){
 		return entries.contains(path);
 	}
-	
+	public abstract FileHandle getFileHandle(String resource);
 }
