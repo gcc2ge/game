@@ -35,7 +35,8 @@ public class GridCartographer implements Cartographer {
 		PointXY pointXY=(PointXY)node;
 		adjcentList.clear()	;
 		float distanceToGoal=pointXY.distanceXY(goalPointXY);//estimate
-		if(distanceToGoal<=stepSize){
+		///////以前点相邻节点会通过，因为没判断目标节点是否可以通过
+		if(distanceToGoal<=stepSize && spaceTester.isSpaceAvailable(goalPointXY)){
 			adjcentList.add(goalPointXY);
 			return adjcentList.iterator();
 		}
