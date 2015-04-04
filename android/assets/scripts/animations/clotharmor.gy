@@ -1,21 +1,21 @@
 regions=game.createTextureRegions("img/character/clotharmor.png",32,32);
 def animations=[:]
 //right 
-animations<<["clotharmor_atk_right":createAnimation(regions[0][0..4],0.05)]
-animations<<["clotharmor_walk_right":createAnimation(regions[1][0..3],0.05)]
-animations<<["clotharmor_idle_right":createAnimation(regions[2][0..1],0.05)]
+animations<<["clotharmor_atk_right":createAnimation(regions[0][0..4],0.1f)]
+animations<<["clotharmor_walk_right":createAnimation(regions[1][0..3],0.1f)]
+animations<<["clotharmor_idle_right":createAnimation(regions[2][0..1],0.1f)]
 //up
-animations<<["clotharmor_atk_up":createAnimation(regions[3][0..4],0.05)]
-animations<<["clotharmor_walk_up":createAnimation(regions[4][0..3],0.05)]
-animations<<["clotharmor_idle_up":createAnimation(regions[5][0..1],0.05)]
+animations<<["clotharmor_atk_up":createAnimation(regions[3][0..4],0.1f)]
+animations<<["clotharmor_walk_up":createAnimation(regions[4][0..3],0.1f)]
+animations<<["clotharmor_idle_up":createAnimation(regions[5][0..1],0.1f)]
 //down
-animations<<["clotharmor_atk_down":createAnimation(regions[6][0..4],0.05)]
-animations<<["clotharmor_walk_down":createAnimation(regions[7][0..3],0.05)]
-animations<<["clotharmor_idle_down":createAnimation(regions[8][0..1],0.05)]
+animations<<["clotharmor_atk_down":createAnimation(regions[6][0..4],0.1f)]
+animations<<["clotharmor_walk_down":createAnimation(regions[7][0..3],0.1f)]
+animations<<["clotharmor_idle_down":createAnimation(regions[8][0..1],0.1f)]
 //left
-animations<<["clotharmor_atk_right":createAnimation(regions[0][0..4].flip(true,false),0.05)]
-animations<<["clotharmor_walk_right":createAnimation(regions[1][0..3].flip(true,false),0.05)]
-animations<<["clotharmor_idle_right":createAnimation(regions[2][0..1].flip(true,false),0.05)]
+//animations<<["clotharmor_atk_right":createAnimation(regions[0][0..4].flip(true,false),0.1f)]
+//animations<<["clotharmor_walk_right":createAnimation(regions[1][0..3].flip(true,false),0.1f)]
+//animations<<["clotharmor_idle_right":createAnimation(regions[2][0..1].flip(true,false),0.1f)]
 animations
 
 def createAnimation(r,d){

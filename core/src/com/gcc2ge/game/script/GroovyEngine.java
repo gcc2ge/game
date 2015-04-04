@@ -14,7 +14,7 @@ public class GroovyEngine {
 		this.engine=manager.getEngineByName("groovy");
 	}
 	public void setInUse(boolean isUse){
-		this.inUse=inUse;
+		this.inUse=isUse;
 	}
 	public boolean inUse(){
 		return inUse;
@@ -23,11 +23,11 @@ public class GroovyEngine {
 		engine.put(key, value);
 	}
 	public Object eval(String script) throws ScriptException{
-		if(!inUse) throw new IllegalStateException("groovy engine already in use!");
+		if(!inUse) throw new IllegalStateException("groovy engine already released!");
 		return engine.eval(script);
 	}
 	public Object invokeFunction(String function,Object...args) throws NoSuchMethodException, ScriptException{
-		if(!inUse) throw new IllegalStateException("groovy engine already in use!");
+		if(!inUse) throw new IllegalStateException("groovy engine already released!");
 		return ((Invocable)engine).invokeFunction(function, args);
 	}
 	public boolean hasFunction(String function){

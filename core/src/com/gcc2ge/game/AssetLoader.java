@@ -30,7 +30,7 @@ public class AssetLoader implements ApplicationListener {
 		
 		manager = new AssetManager();
 		manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-		ResourceManager.registerDesktopResource();
+		
 		//load image
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			///android resource loading
@@ -49,7 +49,7 @@ public class AssetLoader implements ApplicationListener {
 		Gdx.app.log(TAG, "资源加载完成");
 		map=manager.get("maps/map.tmx");
 		//get
-		Set<String> mouse=ResourceManager.getResourceInDirectoryByType("img/mouse", ResourceType.PNG);
+		Set<String> mouse=ResourceManager.getResourceInDirectoryByType("img", ResourceType.PNG);
 		for(String s:mouse){
 			Texture t=manager.get(s);
 			SpriteManager.addTexture(s, t);

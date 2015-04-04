@@ -3,11 +3,14 @@ package com.gcc2ge.game.entity;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.gcc2ge.game.AssetLoader;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.gcc2ge.game.MyGdxGame;
 import com.gcc2ge.game.animation.AnimationEntity;
 import com.gcc2ge.game.sprites.Sprite;
+import com.gcc2ge.game.sprites.SpriteManager;
 
 /**
  * 
@@ -34,12 +37,14 @@ public class Entity {
 	public static void main(String... args){
 		new Entity().test();
 	}
-	
-	public void render(ShapeRenderer shapeRender){
-		shapeRender.begin(ShapeType.Filled);
-		// set to green for full mob health
-		shapeRender.setColor(0, 254, 0, 1);
-		shapeRender.circle(positionX+8, positionY+8, 8);
-		shapeRender.end();
+	float time;
+	Animation a=null;
+	public void render(SpriteBatch batch){
+		time+=Gdx.graphics.getRawDeltaTime();
+		if(a==null){
+			a=MyGdxGame.spriteManager.getAnimation("clotharmor_walk_right");
+		}
+		TextureRegion r=a.getKeyFrame(time);
+		batch.draw(r, this.positionX-12, this.positionY-8);
 	}
 }

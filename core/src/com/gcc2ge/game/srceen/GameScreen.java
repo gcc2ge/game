@@ -14,15 +14,15 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.gcc2ge.game.AreaListener;
-import com.gcc2ge.game.AssetLoader;
 import com.gcc2ge.game.MapProcess;
+import com.gcc2ge.game.MyGdxGame;
 import com.gcc2ge.game.TileMapRender;
 import com.gcc2ge.game.entity.Player;
 
 public class GameScreen implements Screen ,InputProcessor{
 	static final String TAG=GameScreen.class.getName();
 	static final float PIX_PER_MERTER=2/1.0f;
-	AssetLoader loader=null;
+	
 	Game game;
 	TileMapRender mapRenderer=null;
 	OrthographicCamera mapCamera=null;
@@ -44,11 +44,10 @@ public class GameScreen implements Screen ,InputProcessor{
 		//
 		int w = Gdx.graphics.getWidth();
 		int h = Gdx.graphics.getHeight();
-		loader=new AssetLoader();
-		loader.create();
+		
 		this.game=game;
 		batch = new SpriteBatch();
-		mapRenderer=new TileMapRender(loader.map,batch);
+		mapRenderer=new TileMapRender(MyGdxGame.loader.map,batch);
 		mapCamera=new OrthographicCamera(w/PIX_PER_MERTER,h/PIX_PER_MERTER);
 		//×¢²áÊÂ¼þ
 		InputMultiplexer m=new InputMultiplexer(this,new AreaListener()); 
@@ -56,7 +55,7 @@ public class GameScreen implements Screen ,InputProcessor{
 		shapeRender=new ShapeRenderer();
 		firstTime=true;
 		
-		mapProcess=new MapProcess(loader.map);
+		mapProcess=new MapProcess(MyGdxGame.loader.map);
 		mapProcess.processTileSets();
 		mapProcess.processLayers();
 	}
@@ -80,7 +79,10 @@ public class GameScreen implements Screen ,InputProcessor{
 		shapeRender.rect(selectX*16, selectY*16, 16, 16);
 		shapeRender.end();
 		
-		player.render(shapeRender);
+		batch.setProjectionMatrix(mapCamera.combined);
+		batch.begin();
+		player.render(batch);
+		batch.end();
 		//high
 		mapRenderer.renderTileHigh();
 	}
@@ -120,7 +122,7 @@ public class GameScreen implements Screen ,InputProcessor{
 
 	@Override
 	public void dispose() {
-		loader.dispose();
+		MyGdxGame.loader.dispose();
 
 	}
 	@Override

@@ -36,9 +36,12 @@ public class SpriteManager {
 	 * 动画与粒子
 	 */
 	public void loadResource(){
+		//粒子
+		
+		//动画
 		Set<String> resources=ResourceManager.getResourceInDirectory("scripts/animations");
 		for(String resource:resources){
-			
+			loadAnimation(resource);
 		}
 	}
 	private void loadAnimation(String resource){
@@ -56,5 +59,12 @@ public class SpriteManager {
 				this.baseAnimations.put(animationName, animation.get(animationName));
 			}
 		}
+	}
+	public Animation getAnimation(String ref) {
+		Animation a = this.baseAnimations.get(ref);
+		a.setPlayMode(Animation.PlayMode.LOOP);
+		if (a == null) return null;
+		
+		return a;
 	}
 }

@@ -75,11 +75,11 @@ public class Character extends Entity{
 		newDestination=null;
 		GridXY startXY=new GridXY(MathUtils.floor(this.positionX/TILEWIDTH),MathUtils.floor(this.positionY/TILEHEIGHT));
 		path=pathFinder.findPath(startXY, destination);
-		if(pathFinder.steps>1){
-			followPath();
-		}else{
-			path=null;
-		}
+		followPath();
+//		if(pathFinder.steps>1){
+//		}else{
+//			path=null;
+//		}
 	}
 	public void followPath(){
 		//do something
