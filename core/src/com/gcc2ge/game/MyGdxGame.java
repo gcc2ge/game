@@ -4,9 +4,17 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.gcc2ge.game.script.GroovyScriptEngineManager;
+import com.gcc2ge.game.script.ScriptInterface;
 import com.gcc2ge.game.srceen.GameScreen;
 
 public class MyGdxGame extends Game {
+	public static ScriptInterface scriptInterface;
+	public static GroovyScriptEngineManager scriptEngineManager;
+	private void init(){
+		this.scriptEngineManager=new GroovyScriptEngineManager();
+		this.scriptInterface=new ScriptInterface();
+	}
 	@Override
 	public void create() {
 		Gdx.app.setLogLevel(Application.LOG_NONE);
