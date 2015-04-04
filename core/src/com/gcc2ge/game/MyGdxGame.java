@@ -6,18 +6,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.gcc2ge.game.script.GroovyScriptEngineManager;
 import com.gcc2ge.game.script.ScriptInterface;
+import com.gcc2ge.game.sprites.SpriteManager;
 import com.gcc2ge.game.srceen.GameScreen;
 
 public class MyGdxGame extends Game {
 	public static ScriptInterface scriptInterface;
 	public static GroovyScriptEngineManager scriptEngineManager;
+	public static SpriteManager spriteManager;
 	private void init(){
 		this.scriptEngineManager=new GroovyScriptEngineManager();
 		this.scriptInterface=new ScriptInterface();
+		this.spriteManager = new SpriteManager();//加载动画 和 粒子
 	}
 	@Override
 	public void create() {
-		Gdx.app.setLogLevel(Application.LOG_NONE);
+		Gdx.app.setLogLevel(Application.LOG_NONE);//开关日志
 		setScreen(new GameScreen(this));;
 	}
 

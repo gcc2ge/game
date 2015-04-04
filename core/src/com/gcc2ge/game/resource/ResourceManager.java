@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 
 public class ResourceManager {
 	private static List<ResourcePackage> resources=new ArrayList<ResourcePackage>();
-	private static Map<ResourceType,Set<String>> resourceByType=new HashMap<ResourceType,Set<String>>();
+	//½Å±¾»º´æ
+	private static Map<String, String> cachedFiles = new HashMap<String, String>();
 	
 	public static void registerDesktopResource(){
 		resources.add(new DeskResource());
@@ -53,6 +55,30 @@ public class ResourceManager {
 			if(rpackage.hasResource(resource)){
 				return rpackage.getFileHandle(resource);
 			}
+		}
+		return null;
+	}
+	public static String getResourceName(String resource){
+		FileHandle file=getResourceAsFileHandle(resource);
+		if(file!=null){
+			return file.name();
+		}
+		return null;
+	}
+	public static String getResourceAsString(String resource){
+		if(cachedFiles.containsKey(resource)){
+			return cachedFiles.get(resource);
+		}
+		FileHandle handle=null;
+		for(ResourcePackage rpackage:resources){
+			if(rpackage.hasResource(resource)){
+				handle= rpackage.getFileHandle(resource);
+				break;
+			}
+		}
+		if(handle!=null){
+			cachedFiles.put(resource, handle.readString());
+			return cachedFiles.get(resource);
 		}
 		return null;
 	}
