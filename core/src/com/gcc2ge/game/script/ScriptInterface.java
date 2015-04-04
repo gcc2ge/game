@@ -14,4 +14,7 @@ public class ScriptInterface {
 	public Animation createAnimation(List<TextureRegion> regions,float duration) {
 		return new Animation(duration,regions.toArray(new TextureRegion[]{}));
 	}
+	public TextureRegion cloneTextureRegion(TextureRegion r){
+		return new TextureRegion(r);
+	}
 }

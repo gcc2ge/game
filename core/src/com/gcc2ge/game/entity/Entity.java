@@ -42,7 +42,7 @@ public class Entity {
 	public void render(SpriteBatch batch){
 		time+=Gdx.graphics.getRawDeltaTime();
 		if(a==null){
-			a=MyGdxGame.spriteManager.getAnimation("clotharmor_walk_right");
+			a=MyGdxGame.spriteManager.getAnimation("clotharmor_walk_left");
 		}
 		TextureRegion r=a.getKeyFrame(time);
 		batch.draw(r, this.positionX-12, this.positionY-8);

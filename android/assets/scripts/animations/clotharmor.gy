@@ -13,12 +13,23 @@ animations<<["clotharmor_atk_down":createAnimation(regions[6][0..4],0.1f)]
 animations<<["clotharmor_walk_down":createAnimation(regions[7][0..3],0.1f)]
 animations<<["clotharmor_idle_down":createAnimation(regions[8][0..1],0.1f)]
 //left
-//animations<<["clotharmor_atk_right":createAnimation(regions[0][0..4].flip(true,false),0.1f)]
-//animations<<["clotharmor_walk_right":createAnimation(regions[1][0..3].flip(true,false),0.1f)]
-//animations<<["clotharmor_idle_right":createAnimation(regions[2][0..1].flip(true,false),0.1f)]
+animations<<["clotharmor_atk_left":createAnimation(reverse(regions[0][0..4]),0.1f)]
+animations<<["clotharmor_walk_left":createAnimation(reverse(regions[1][0..3]),0.1f)]
+animations<<["clotharmor_idle_left":createAnimation(reverse(regions[2][0..1]),0.1f)]
 animations
 
 def createAnimation(r,d){
 	def anim=game.createAnimation(r,d)
 	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
 }
