@@ -24,7 +24,6 @@ public class Transition {
 		if(!inProgress){
 			return;
 		}
-		System.err.println(this.direction);
 		switch(this.direction){
 			case LEFT:
 			case DOWN:
@@ -37,7 +36,6 @@ public class Transition {
 			case RIGHT:
 			case UP:
 				startValue+=speed*Gdx.graphics.getDeltaTime();
-				System.err.println("delta time:"+Gdx.graphics.getDeltaTime()+"	startValue:"+startValue);
 				if(startValue>=endValue){
 					inProgress=false;
 					startValue=endValue;
