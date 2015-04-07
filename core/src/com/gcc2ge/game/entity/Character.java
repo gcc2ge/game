@@ -93,13 +93,13 @@ public class Character extends Entity{
 			changeDirection(gridXY);
 			switch(this.oriention){
 				case LEFT:
-					movement.start(this.positionX,gridXY.getX()*TILEWIDTH , -1*walkSpeed,this.oriention, callBack);
+					movement.start(this.positionX,gridXY.getX()*TILEWIDTH , walkSpeed,this.oriention, callBack);
 					break;
 				case RIGHT:
 					movement.start(this.positionX,gridXY.getX()*TILEWIDTH , walkSpeed,this.oriention, callBack);
 					break;
 				case DOWN:
-					movement.start(this.positionY,gridXY.getY()*TILEHEIGHT , -1*walkSpeed,this.oriention, callBack);
+					movement.start(this.positionY,gridXY.getY()*TILEHEIGHT , walkSpeed,this.oriention, callBack);
 					break;
 				case UP:
 					movement.start(this.positionY,gridXY.getY()*TILEHEIGHT , walkSpeed,this.oriention, callBack);
@@ -130,8 +130,10 @@ public class Character extends Entity{
 	 * @param target
 	 */
 	public void changeDirection(GridXY target){
+		Gdx.app.log(TAG,"before oriention: "+this.oriention);
 		GridXY g=new GridXY(this.positionX/TILEWIDTH,this.positionY/TILEHEIGHT);
 		int d=(int)g.angleTo(target);
+		Gdx.app.log(TAG,"current Position: "+g+" target position: "+target+" oriention angle is: "+d);
 		this.oriention=Oriention.getOriention(d);
 		Gdx.app.log(TAG, "oriention "+this.oriention);
 	}
@@ -152,5 +154,6 @@ public class Character extends Entity{
 	 */
 	public void update(){
 		movement.step();
+		
 	}
 }

@@ -44,7 +44,8 @@ public class GridCartographer implements Cartographer {
 		float y=pointXY.getY();
 		for(int ix=-1;ix<2;ix++){
 			for(int iy=-1;iy<2;iy++){
-				if((iy==0&& ix==0) ||(iy==-1&& ix==-1)||(iy==1&& ix==1)||(iy==-1&& ix==1)||(iy==1&& ix==1)){
+				//(iy==1&& ix==-1) 以前写错一个判断
+				if((iy==0&& ix==0) ||(iy==-1&& ix==-1)||(iy==1&& ix==1)||(iy==-1&& ix==1)||(iy==1&& ix==-1)){
 					continue;
 				}
 //				PointXY step=new GridXY(((int)(x/stepSize)+ix)*stepSize,((int)(y/stepSize)+iy)*stepSize);

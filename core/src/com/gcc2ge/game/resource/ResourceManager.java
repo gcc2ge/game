@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.files.FileHandle;
 
 public class ResourceManager {
@@ -16,7 +17,11 @@ public class ResourceManager {
 	private static Map<String, String> cachedFiles = new HashMap<String, String>();
 	
 	public static void registerDesktopResource(){
-		resources.add(new DeskResource());
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			resources.add(new AndroidResource());
+		} else {
+			resources.add(new DeskResource());
+		}
 	}
 	public static Set<String> getResourceInDirectory(String dir){		
 		Set<String> set = new LinkedHashSet<String>();

@@ -47,6 +47,8 @@ public class AStar {
 			nodeInfo=parentNodeInfo;
 		}
 		steps=pathList.size();
+		
+		Gdx.app.log(TAG, "path "+pathList);
 		Gdx.app.log(TAG, "path "+steps);
 		return pathList.iterator();
 	}

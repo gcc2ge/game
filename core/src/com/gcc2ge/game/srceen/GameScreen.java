@@ -13,10 +13,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
-import com.gcc2ge.game.AreaListener;
 import com.gcc2ge.game.MapProcess;
 import com.gcc2ge.game.MyGdxGame;
 import com.gcc2ge.game.TileMapRender;
+import com.gcc2ge.game.area.AreaListener;
 import com.gcc2ge.game.entity.Player;
 
 public class GameScreen implements Screen ,InputProcessor{

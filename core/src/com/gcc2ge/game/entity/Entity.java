@@ -18,10 +18,10 @@ import com.gcc2ge.game.sprites.SpriteManager;
  * 主要用户显示
  */
 public class Entity {
-	public float positionX=Gdx.graphics.getWidth(),positionY=Gdx.graphics.getHeight();
-//	int gridPositionX,gridPositionY;
 	final int TILEWIDTH=16;
 	final int TILEHEIGHT=16;
+	public float positionX=(Gdx.graphics.getWidth()/TILEWIDTH)*TILEWIDTH,positionY=(Gdx.graphics.getHeight()/TILEHEIGHT)*TILEHEIGHT;
+
 	//人物 动画  
 	Map<String,AnimationEntity> animations;
 	int x,y;
@@ -38,12 +38,9 @@ public class Entity {
 		new Entity().test();
 	}
 	float time;
-	Animation a=null;
+	Animation a=MyGdxGame.spriteManager.getAnimation("clotharmor_idle_down");
 	public void render(SpriteBatch batch){
 		time+=Gdx.graphics.getRawDeltaTime();
-		if(a==null){
-			a=MyGdxGame.spriteManager.getAnimation("clotharmor_walk_left");
-		}
 		TextureRegion r=a.getKeyFrame(time);
 		batch.draw(r, this.positionX-12, this.positionY-8);
 	}

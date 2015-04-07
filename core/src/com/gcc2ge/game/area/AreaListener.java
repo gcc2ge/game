@@ -1,6 +1,4 @@
-package com.gcc2ge.game;
-
-import java.awt.Cursor;
+package com.gcc2ge.game.area;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;

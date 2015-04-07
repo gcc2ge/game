@@ -32,8 +32,7 @@ public class AndroidResource extends ResourcePackage {
 	}
 	@Override
 	public FileHandle getFileHandle(String resource) {
-		// TODO Auto-generated method stub
-		return null;
+		return Gdx.files.internal(resource);
 	}
 	
 }

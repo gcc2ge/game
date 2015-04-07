@@ -32,19 +32,14 @@ public class AssetLoader implements ApplicationListener {
 		manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 		
 		//load image
-		if (Gdx.app.getType() == ApplicationType.Android) {
-			///android resource loading
-		} else {
-		  // ApplicationType.Desktop ..
-		   for(ResourceLocation location:ResourceLocation.values()){
-			   Set<String> sortedSet=ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.PNG);
-			   sortedSet.addAll(ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.TMX));
-			   if(sortedSet==null)continue;
-			   for(String resource:sortedSet){
-				   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
-			   }
+	   for(ResourceLocation location:ResourceLocation.values()){
+		   Set<String> sortedSet=ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.PNG);
+		   sortedSet.addAll(ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.TMX));
+		   if(sortedSet==null)continue;
+		   for(String resource:sortedSet){
+			   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
 		   }
-		}
+	   }
 		manager.finishLoading();
 		Gdx.app.log(TAG, "资源加载完成");
 		map=manager.get("maps/map.tmx");

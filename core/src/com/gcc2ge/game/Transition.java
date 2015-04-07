@@ -24,14 +24,31 @@ public class Transition {
 		if(!inProgress){
 			return;
 		}
-		startValue+=speed*Gdx.graphics.getDeltaTime();
-//		Gdx.app.log(TAG, "startValue: "+startValue);
-		if((speed>0&&startValue>=endValue) || (speed<0&&startValue<=endValue)){
-			inProgress=false;
-			callBack.onEnd(endValue,this.direction);
-			return;
+		System.err.println(this.direction);
+		switch(this.direction){
+			case LEFT:
+			case DOWN:
+				startValue-=speed*Gdx.graphics.getDeltaTime();
+				if(startValue<=endValue){
+					inProgress=false;
+					startValue=endValue;
+				}
+				break;
+			case RIGHT:
+			case UP:
+				startValue+=speed*Gdx.graphics.getDeltaTime();
+				System.err.println("delta time:"+Gdx.graphics.getDeltaTime()+"	startValue:"+startValue);
+				if(startValue>=endValue){
+					inProgress=false;
+					startValue=endValue;
+				}
+				break;
 		}
-		callBack.onProgress(startValue,this.direction);
+		if(inProgress){
+			callBack.onProgress(startValue,this.direction);
+		}else{
+			callBack.onEnd(startValue,this.direction);
+		}
 		
 	}
 	public void stop(){
