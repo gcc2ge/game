@@ -3,15 +3,13 @@ package com.gcc2ge.game.entity;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
+import com.gcc2ge.game.MyGdxGame;
 import com.gcc2ge.game.Transition;
 import com.gcc2ge.game.Transition.TransitionCallBack;
-import com.gcc2ge.game.ai.AStar;
-import com.gcc2ge.game.ai.GridCartographer;
-import com.gcc2ge.game.ai.GridSpaceTester;
 import com.gcc2ge.game.ai.GridXY;
 import com.gcc2ge.game.ai.PathFinder;
-import com.gcc2ge.game.ai.SpaceTester;
 
 public class Character extends Entity{
 	final String TAG=Character.class.getName();
@@ -37,7 +35,7 @@ public class Character extends Entity{
 		
 		@Override
 		public void onProgress(float value,Oriention direction) {
-			Gdx.app.log(TAG, value+" this");
+			Gdx.app.log(TAG, value+" this");Character.this.state=State.WALK;
 			updatePosition(value,direction);
 		}
 		
@@ -51,7 +49,7 @@ public class Character extends Entity{
 				if(path!=null && path.hasNext()){
 					Character.this.nextStep();
 				}else{
-					
+					Character.this.state=State.IDLE;
 				}
 			}
 			
@@ -141,18 +139,37 @@ public class Character extends Entity{
 	 * ¶¯»­
 	 */
 	public void walk(){
-		
+		Animation aa=MyGdxGame.spriteManager.getAnimation("clotharmor_walk_"+this.oriention);
+		this.a=aa;
 	}
 	public void idle(){
+		Animation aa=MyGdxGame.spriteManager.getAnimation("clotharmor_idle_"+this.oriention);
+		this.a=aa;
 		
 	}
 	public void atk(){
 		
 	}
+	public void animation(){
+		switch (this.state) {
+		case WALK:
+			walk();
+			break;
+		case ATTACK:
+			atk();
+			break;
+		case IDLE:
+			idle();
+			break;
+		default:
+			break;
+		}
+	}
 	/**
 	 * game loop µ÷ÓÃ
 	 */
 	public void update(){
+		animation();
 		movement.step();
 		
 	}
