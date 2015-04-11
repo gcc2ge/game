@@ -1,0 +1,37 @@
+regions=game.createTextureRegions("img/creature/crab.png",32,32);
+def animations=[:]
+//death
+animations<<["crab_death":createAnimation(regions[0][0..7],0.1f)]
+//right 
+animations<<["crab_atk_right":createAnimation(regions[1][0..6],0.1f)]
+animations<<["crab_walk_right":createAnimation(regions[2][0..5],0.1f)]
+animations<<["crab_idle_right":createAnimation(regions[3][0..3],0.1f)]
+//up
+animations<<["crab_atk_up":createAnimation(regions[4][0..7],0.1f)]
+animations<<["crab_walk_up":createAnimation(regions[5][0..3],0.1f)]
+animations<<["crab_idle_up":createAnimation(regions[6][0..5],0.1f)]
+//down
+animations<<["crab_atk_down":createAnimation(regions[7][0..7],0.1f)]
+animations<<["crab_walk_down":createAnimation(regions[8][0..5],0.1f)]
+animations<<["crab_idle_down":createAnimation(regions[9][0..6],0.1f)]
+//left
+animations<<["crab_atk_left":createAnimation(reverse(regions[1][0..7]),0.1f)]
+animations<<["crab_walk_left":createAnimation(reverse(regions[2][0..5]),0.1f)]
+animations<<["crab_idle_left":createAnimation(reverse(regions[3][0..6]),0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
+}

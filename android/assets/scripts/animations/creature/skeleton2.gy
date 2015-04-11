@@ -1,0 +1,35 @@
+regions=game.createTextureRegions("img/creature/skeleton2.png",48,48);
+def animations=[:]
+//right 
+animations<<["skeleton2_atk_right":createAnimation(regions[0][0..2],0.1f)]
+animations<<["skeleton2_walk_right":createAnimation(regions[1][0..3],0.1f)]
+animations<<["skeleton2_idle_right":createAnimation(regions[2][0..1],0.1f)]
+//up
+animations<<["skeleton2_atk_up":createAnimation(regions[3][0..2],0.1f)]
+animations<<["skeleton2_walk_up":createAnimation(regions[4][0..3],0.1f)]
+animations<<["skeleton2_idle_up":createAnimation(regions[5][0..2],0.1f)]
+//down
+animations<<["skeleton2_atk_down":createAnimation(regions[6][0..2],0.1f)]
+animations<<["skeleton2_walk_down":createAnimation(regions[7][0..3],0.1f)]
+animations<<["skeleton2_idle_down":createAnimation(regions[8][0..2],0.1f)]
+//left
+animations<<["skeleton2_atk_left":createAnimation(reverse(regions[0][0..2]),0.1f)]
+animations<<["skeleton2_walk_left":createAnimation(reverse(regions[1][0..3]),0.1f)]
+animations<<["skeleton2_idle_left":createAnimation(reverse(regions[2][0..1]),0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
+}

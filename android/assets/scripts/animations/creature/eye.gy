@@ -1,0 +1,35 @@
+regions=game.createTextureRegions("img/creature/eye.png",40,48);
+def animations=[:]
+//right 
+animations<<["eye_atk_right":createAnimation(regions[0][0..5],0.1f)]
+animations<<["eye_walk_right":createAnimation(regions[1][0..3],0.1f)]
+animations<<["eye_idle_right":createAnimation(regions[2][0..13],0.1f)]
+//up
+animations<<["eye_atk_up":createAnimation(regions[3][0..3],0.1f)]
+animations<<["eye_walk_up":createAnimation(regions[4][0..3],0.1f)]
+animations<<["eye_idle_up":createAnimation(regions[5][0..13],0.1f)]
+//down
+animations<<["eye_atk_down":createAnimation(regions[6][0..7],0.1f)]
+animations<<["eye_walk_down":createAnimation(regions[7][0..3],0.1f)]
+animations<<["eye_idle_down":createAnimation(regions[8][0..13],0.1f)]
+//left
+animations<<["eye_atk_left":createAnimation(reverse(regions[0][0..5]),0.1f)]
+animations<<["eye_walk_left":createAnimation(reverse(regions[1][0..3]),0.1f)]
+animations<<["eye_idle_left":createAnimation(reverse(regions[2][0..13]),0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
+}

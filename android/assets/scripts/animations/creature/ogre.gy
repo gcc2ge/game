@@ -1,0 +1,35 @@
+regions=game.createTextureRegions("img/creature/ogre.png",48,48);
+def animations=[:]
+//right 
+animations<<["ogre_atk_right":createAnimation(regions[0][0..2],0.1f)]
+animations<<["ogre_walk_right":createAnimation(regions[1][0..5],0.1f)]
+animations<<["ogre_idle_right":createAnimation(regions[2][0..1],0.1f)]
+//up
+animations<<["ogre_atk_up":createAnimation(regions[3][0..2],0.1f)]
+animations<<["ogre_walk_up":createAnimation(regions[4][0..4],0.1f)]
+animations<<["ogre_idle_up":createAnimation(regions[5][0..1],0.1f)]
+//down
+animations<<["ogre_atk_down":createAnimation(regions[6][0..2],0.1f)]
+animations<<["ogre_walk_down":createAnimation(regions[7][0..5],0.1f)]
+animations<<["ogre_idle_down":createAnimation(regions[8][0..1],0.1f)]
+//left
+animations<<["ogre_atk_left":createAnimation(reverse(regions[0][0..2]),0.1f)]
+animations<<["ogre_walk_left":createAnimation(reverse(regions[1][0..5]),0.1f)]
+animations<<["ogre_idle_left":createAnimation(reverse(regions[2][0..1]),0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
+}

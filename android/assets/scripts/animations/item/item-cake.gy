@@ -1,0 +1,10 @@
+regions=game.createTextureRegions("img/item/item-cake.png",24,24);
+def animations=[:]
+//idle 
+animations<<["item-cake_idle":createAnimation(regions[0][0..2],0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}

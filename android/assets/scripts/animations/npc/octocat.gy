@@ -1,0 +1,10 @@
+regions=game.createTextureRegions("img/npc/octocat.png",32,32);
+def animations=[:]
+//idle 
+animations<<["octocat_idle":createAnimation(regions[0][0..3],0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}

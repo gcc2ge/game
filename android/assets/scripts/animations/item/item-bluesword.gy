@@ -1,0 +1,10 @@
+regions=game.createTextureRegions("img/item/item-bluesword.png",16,16);
+def animations=[:]
+//idle 
+animations<<["item-bluesword_idle":createAnimation(regions[0][0..5],0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}

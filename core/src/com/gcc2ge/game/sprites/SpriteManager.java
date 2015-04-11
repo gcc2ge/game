@@ -51,7 +51,7 @@ public class SpriteManager {
 		try {
 			animation=(Map<String,Animation>) engine.eval(ResourceManager.getResourceAsString(resource));
 		} catch (ScriptException e) {
-			Gdx.app.log(TAG, "载入动画出错:");
+			Gdx.app.log(TAG, "载入动画出错: "+resource);
 			e.printStackTrace();
 		}
 		if(animation!=null){

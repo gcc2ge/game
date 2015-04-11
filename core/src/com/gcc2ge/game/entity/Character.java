@@ -139,11 +139,11 @@ public class Character extends Entity{
 	 * ¶¯»­
 	 */
 	public void walk(){
-		Animation aa=MyGdxGame.spriteManager.getAnimation("clotharmor_walk_"+this.oriention);
+		Animation aa=MyGdxGame.spriteManager.getAnimation("ogre_walk_"+this.oriention);
 		this.a=aa;
 	}
 	public void idle(){
-		Animation aa=MyGdxGame.spriteManager.getAnimation("clotharmor_idle_"+this.oriention);
+		Animation aa=MyGdxGame.spriteManager.getAnimation("ogre_idle_"+this.oriention);
 		this.a=aa;
 		
 	}

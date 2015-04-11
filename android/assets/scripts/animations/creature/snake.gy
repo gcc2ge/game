@@ -1,0 +1,35 @@
+regions=game.createTextureRegions("img/creature/snake.png",28,28);
+def animations=[:]
+//right 
+animations<<["snake_atk_right":createAnimation(regions[0][0..4],0.1f)]
+animations<<["snake_walk_right":createAnimation(regions[1][0..3],0.1f)]
+animations<<["snake_idle_right":createAnimation(regions[2][0..3],0.1f)]
+//up
+animations<<["snake_atk_up":createAnimation(regions[3][0..4],0.1f)]
+animations<<["snake_walk_up":createAnimation(regions[4][0..3],0.1f)]
+animations<<["snake_idle_up":createAnimation(regions[5][0..3],0.1f)]
+//down
+animations<<["snake_atk_down":createAnimation(regions[6][0..4],0.1f)]
+animations<<["snake_walk_down":createAnimation(regions[7][0..3],0.1f)]
+animations<<["snake_idle_down":createAnimation(regions[8][0..5],0.1f)]
+//left
+animations<<["snake_atk_left":createAnimation(reverse(regions[0][0..4]),0.1f)]
+animations<<["snake_walk_left":createAnimation(reverse(regions[1][0..3]),0.1f)]
+animations<<["snake_idle_left":createAnimation(reverse(regions[2][0..3]),0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
+}

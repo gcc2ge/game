@@ -1,0 +1,37 @@
+regions=game.createTextureRegions("img/creature/wizard.png",26,26);
+def animations=[:]
+//death 
+animations<<["wizard_death":createAnimation(regions[0][0..2],0.1f)]
+//atk
+animations<<["wizard_atk_right":createAnimation(regions[1][0..3],0.1f)]
+animations<<["wizard_atk_up":createAnimation(regions[2][0..3],0.1f)]
+animations<<["wizard_atk_down":createAnimation(regions[3][0..3],0.1f)]
+//walk
+animations<<["wizard_walk_right":createAnimation(regions[4][0..3],0.1f)]
+animations<<["wizard_walk_up":createAnimation(regions[5][0..3],0.1f)]
+animations<<["wizard_walk_down":createAnimation(regions[6][0..3],0.1f)]
+//idle
+animations<<["wizard_idle_right":createAnimation(regions[7][0..5],0.1f)]
+animations<<["wizard_idle_up":createAnimation(regions[8][0..5],0.1f)]
+animations<<["wizard_idle_down":createAnimation(regions[9][0..5],0.1f)]
+//left
+animations<<["wizard_atk_left":createAnimation(reverse(regions[1][0..3]),0.1f)]
+animations<<["wizard_walk_left":createAnimation(reverse(regions[4][0..3]),0.1f)]
+animations<<["wizard_idle_left":createAnimation(reverse(regions[7][0..5]),0.1f)]
+animations
+
+def createAnimation(r,d){
+	def anim=game.createAnimation(r,d)
+	anim
+}
+//range iterator
+def reverse(r){
+	def temp=[]
+	def tmpregion
+	r.each{
+		tmpregion=game.cloneTextureRegion(it)
+		tmpregion.flip(true,false)
+		temp<<tmpregion
+	}
+	temp
+}
