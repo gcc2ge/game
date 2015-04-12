@@ -7,6 +7,8 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
@@ -80,6 +82,12 @@ public class MapProcess {
 					processLayer(layer);
 				} 
 			}
+		}
+		//door
+		MapObjects doors=map.getLayers().get("doors").getObjects();
+		for(MapObject door:doors){
+			MapProperties props=door.getProperties();
+			props.get("");
 		}
 		Gdx.app.log(TAG,"mapCollideArray size: "+mapCollideArray.size());
 	}

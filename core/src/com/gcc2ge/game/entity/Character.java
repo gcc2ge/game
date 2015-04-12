@@ -1,6 +1,7 @@
 package com.gcc2ge.game.entity;
 
 import java.util.Iterator;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -24,6 +25,8 @@ public class Character extends Entity{
 	Iterator path=null;
 	PathFinder pathFinder=null;
 	GridXY newDestination=null;
+	//路径完成回调
+	List<Runnable> finishMoveCallback;
 	//TransitionCallBack
 	TransitionCallBack callBack=new TransitionCallBack() {
 		
@@ -46,10 +49,15 @@ public class Character extends Entity{
 			if(newDestination!=null){
 				Character.this.moveTo((int)newDestination.getX(), (int)newDestination.getY());
 			}else{
-				if(path!=null && path.hasNext()){
+				if(path!=null && path.hasNext()){//路径为全部完成，继续执行下一个路径
 					Character.this.nextStep();
-				}else{
+				}else{//路径执行完成
 					Character.this.state=State.IDLE;
+					if(finishMoveCallback!=null){
+						for(Runnable run:finishMoveCallback){
+							run.run();
+						}
+					}
 				}
 			}
 			
@@ -60,13 +68,31 @@ public class Character extends Entity{
 		pathFinder=new PathFinder();
 	}
 	
-	public void go(int screenX,int screenY){
+	public void go(int x,int y){
 		//do something
 		if(path!=null && path.hasNext()){//正在移动 过程中改变状态
-			newDestination=new GridXY(screenX,screenY);
+			changeCurrentMove(x,y);
 		}else{
-			moveTo(screenX,screenY);
+			moveTo(x,y);
 		}
+	}
+	//改变移动
+	public void changeCurrentMove(int x,int y){
+		newDestination=new GridXY(x,y);
+		if(finishMoveCallback!=null){
+			finishMoveCallback.clear();
+		}
+	}
+	//取消当前移动
+	public void cancelCurrentMove(){
+		path=null;
+		if(finishMoveCallback!=null){
+			finishMoveCallback.clear();
+		}
+	}
+	//注册移动完成回调
+	public void addFinishMoveCallBack(Runnable run){
+		finishMoveCallback.add(run);
 	}
 	public void moveTo(int gridX,int gridY){
 		destination=new GridXY(gridX, gridY);
@@ -74,10 +100,6 @@ public class Character extends Entity{
 		GridXY startXY=new GridXY(MathUtils.floor(this.positionX/TILEWIDTH),MathUtils.floor(this.positionY/TILEHEIGHT));
 		path=pathFinder.findPath(startXY, destination);
 		followPath();
-//		if(pathFinder.steps>1){
-//		}else{
-//			path=null;
-//		}
 	}
 	public void followPath(){
 		//do something

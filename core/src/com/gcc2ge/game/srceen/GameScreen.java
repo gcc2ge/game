@@ -91,6 +91,7 @@ public class GameScreen implements Screen ,InputProcessor{
 	public void resize(int width, int height) {
 		mapCamera.viewportWidth=width/PIX_PER_MERTER;
 		mapCamera.viewportHeight=height/PIX_PER_MERTER;
+		mapCamera.zoom=0.68f;
 		mapCamera.update();
 		firstTime=false;
 

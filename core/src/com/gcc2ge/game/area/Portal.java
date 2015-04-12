@@ -5,5 +5,6 @@ package com.gcc2ge.game.area;
  *
  */
 public class Portal {
-	
+	//
+	Location location;
 }

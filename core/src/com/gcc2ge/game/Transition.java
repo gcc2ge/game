@@ -2,7 +2,11 @@ package com.gcc2ge.game;
 
 import com.badlogic.gdx.Gdx;
 import com.gcc2ge.game.entity.Oriention;
-
+/**
+ * 一个路径执行功能
+ * @author gcc2ge
+ *
+ */
 public class Transition {
 	final String TAG=Transition.class.getName();
 	float startValue,endValue,speed;
