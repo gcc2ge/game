@@ -1,4 +1,4 @@
-package com.gcc2ge.game.area.defaultability;
+package com.gcc2ge.game.defaultability;
 
 import com.gcc2ge.game.area.Location;
 import com.gcc2ge.game.entity.Player;
