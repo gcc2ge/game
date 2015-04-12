@@ -17,10 +17,17 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.utils.Array;
 import com.gcc2ge.game.ai.GridXY;
 import com.gcc2ge.game.animation.AnimationConfig;
+import com.gcc2ge.game.area.Area;
+import com.gcc2ge.game.area.Location;
+import com.gcc2ge.game.area.Portal;
 
 public class MapProcess {
 	final static String TAG=MapProcess.class.getName();
 	TiledMap map;
+	Area area;
+	public void setArea(Area area){
+		area=area;
+	}
 	public MapProcess(TiledMap map){
 		this.map=map;
 	}
@@ -87,7 +94,13 @@ public class MapProcess {
 		MapObjects doors=map.getLayers().get("doors").getObjects();
 		for(MapObject door:doors){
 			MapProperties props=door.getProperties();
-			props.get("");
+			Object x=props.get("x");//GridXY
+			Object y=props.get("y");
+			Portal portal=new Portal();
+			Location location=new Location(area, new GridXY(Integer.valueOf(x.toString()),Integer.valueOf(y.toString())));
+			portal.setLocation(location);
+			area.addPortal(portal);
+			
 		}
 		Gdx.app.log(TAG,"mapCollideArray size: "+mapCollideArray.size());
 	}

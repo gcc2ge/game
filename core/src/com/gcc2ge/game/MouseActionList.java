@@ -10,7 +10,7 @@ import com.gcc2ge.game.util.JsonUtil;
 
 public class MouseActionList {
 	public enum Condition{
-		Loot,Attack,Talk,Move
+		Loot,Attack,Talk,Move,Travel
 	}
 	private final Map<Condition,String> mouseCursors;
 	

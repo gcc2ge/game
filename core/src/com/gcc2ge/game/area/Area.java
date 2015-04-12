@@ -18,4 +18,14 @@ public class Area {
 		entityList=new AreaEntityList();
 		portalList=new ArrayList<Portal>();
 	}
+	public void addPortal(Portal p){
+		portalList.add(p);
+	}
+	public Portal getPortal(float x,float y){
+		for(Portal p:portalList){
+			if(p.location.getX()==x && p.location.getY()==y)
+				return p;
+		}
+		return null;
+	}
 }

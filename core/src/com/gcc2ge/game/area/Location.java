@@ -35,5 +35,9 @@ public class Location {
 		return Math.abs(x-otherX)+Math.abs(y-otherY);
 	}
 	//get current position entity
-	
+	public Portal getPortal(){
+		if(area==null)
+			throw new UnsupportedOperationException("Area ²»´æÔÚ");
+		return area.getPortal(x, y);
+	}
 }

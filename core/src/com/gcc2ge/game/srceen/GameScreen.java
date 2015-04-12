@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.gcc2ge.game.MapProcess;
 import com.gcc2ge.game.MyGdxGame;
 import com.gcc2ge.game.TileMapRender;
+import com.gcc2ge.game.area.Area;
 import com.gcc2ge.game.area.AreaListener;
 import com.gcc2ge.game.entity.Player;
 
@@ -37,6 +38,8 @@ public class GameScreen implements Screen ,InputProcessor{
 	
 	//map process
 	MapProcess mapProcess=null;
+	//area
+	Area area;
 	
 	//player
 	Player player=new Player();
@@ -55,7 +58,11 @@ public class GameScreen implements Screen ,InputProcessor{
 		shapeRender=new ShapeRenderer();
 		firstTime=true;
 		
+		//area
+		area=new Area();
+		//mapprocess
 		mapProcess=new MapProcess(MyGdxGame.loader.map);
+		mapProcess.setArea(area);
 		mapProcess.processTileSets();
 		mapProcess.processLayers();
 	}

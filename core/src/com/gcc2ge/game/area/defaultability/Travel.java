@@ -1,6 +1,7 @@
 package com.gcc2ge.game.area.defaultability;
 
 import com.gcc2ge.game.area.Location;
+import com.gcc2ge.game.area.Portal;
 import com.gcc2ge.game.entity.Player;
 
 public class Travel implements DefaultAbility {
@@ -13,7 +14,10 @@ public class Travel implements DefaultAbility {
 
 	@Override
 	public boolean canActivate(Player parent, Location target) {
-		
+		Portal p=target.getPortal();
+		if(p!=null){
+			return true;
+		}
 		return false;
 	}
 
@@ -28,6 +32,8 @@ public class Travel implements DefaultAbility {
 			parent.go((int)target.getX(), (int)target.getY());
 		}else{
 			//ÇÐ»»³¡¾°
+			parent.positionX=target.getX();
+			parent.positionY=target.getY();
 		}
 	}
 
@@ -46,6 +52,8 @@ public class Travel implements DefaultAbility {
 		public void run(){
 			if(target.getDistance(parent.positionX, parent.positionY)<=1){
 				//ÇÐ»»³¡¾°
+				parent.positionX=target.getX();
+				parent.positionY=target.getY();
 			}
 		}
 	}
