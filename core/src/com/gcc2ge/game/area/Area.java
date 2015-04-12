@@ -6,5 +6,9 @@ package com.gcc2ge.game.area;
  *
  */
 public class Area {
-
+	private final AreaEntityList entityList;
+	
+	public Area(){
+		entityList=new AreaEntityList();
+	}
 }
