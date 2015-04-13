@@ -10,10 +10,12 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.gcc2ge.game.ai.GridXY;
 import com.gcc2ge.game.animation.AnimationConfig;
@@ -26,7 +28,7 @@ public class MapProcess {
 	TiledMap map;
 	Area area;
 	public void setArea(Area area){
-		area=area;
+		this.area=area;
 	}
 	public MapProcess(TiledMap map){
 		this.map=map;
@@ -96,9 +98,15 @@ public class MapProcess {
 			MapProperties props=door.getProperties();
 			Object x=props.get("x");//GridXY
 			Object y=props.get("y");
+			//test
+			RectangleMapObject rectangleObject=(RectangleMapObject)door;
+			Rectangle rectangle=rectangleObject.getRectangle();
+			Location fromLocation=new Location(area,new GridXY(rectangle.x/16, rectangle.y/16));
 			Portal portal=new Portal();
-			Location location=new Location(area, new GridXY(Integer.valueOf(x.toString()),Integer.valueOf(y.toString())));
-			portal.setLocation(location);
+			int heightTile=314;
+			Location targetLocation=new Location(area, new GridXY(Integer.valueOf(x.toString()),heightTile-Integer.valueOf(y.toString())-1));//坐标转换，tileMap object 坐标为左上角 libgdx 坐标为笛卡尔坐标
+			portal.setTargetLocation(targetLocation);
+			portal.setFromLocation(fromLocation);
 			area.addPortal(portal);
 			
 		}

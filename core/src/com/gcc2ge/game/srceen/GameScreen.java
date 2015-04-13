@@ -8,16 +8,22 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.gcc2ge.game.MapProcess;
+import com.gcc2ge.game.MouseActionList;
+import com.gcc2ge.game.MouseActionList.Condition;
 import com.gcc2ge.game.MyGdxGame;
 import com.gcc2ge.game.TileMapRender;
+import com.gcc2ge.game.ai.GridXY;
 import com.gcc2ge.game.area.Area;
 import com.gcc2ge.game.area.AreaListener;
+import com.gcc2ge.game.area.Location;
+import com.gcc2ge.game.defaultability.DefaultAbility;
 import com.gcc2ge.game.entity.Player;
 
 public class GameScreen implements Screen ,InputProcessor{
@@ -40,7 +46,8 @@ public class GameScreen implements Screen ,InputProcessor{
 	MapProcess mapProcess=null;
 	//area
 	Area area;
-	
+	//mousecondition
+	MouseActionList.Condition currentCondition;
 	//player
 	Player player=new Player();
 	public GameScreen(Game game){
@@ -84,6 +91,11 @@ public class GameScreen implements Screen ,InputProcessor{
 		// set to green for full mob health
 		shapeRender.setColor(0, 255, 0, 1);
 		shapeRender.rect(selectX*16, selectY*16, 16, 16);
+		//debug do0r
+	/*	for(Portal p:area.portalList){
+			Location location=p.targetLocation;
+			shapeRender.rect(location.getX()*16, location.getY()*16, 16, 16);
+		}*/
 		shapeRender.end();
 		
 		batch.setProjectionMatrix(mapCamera.combined);
@@ -135,17 +147,17 @@ public class GameScreen implements Screen ,InputProcessor{
 	}
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override
@@ -156,28 +168,50 @@ public class GameScreen implements Screen ,InputProcessor{
 		selectX=MathUtils.floor(touchPosition.x/16);
 		selectY=MathUtils.floor(touchPosition.y/16);
 		Gdx.app.log(TAG, selectX+" "+selectY);
-		player.go(selectX, selectY);
+//		player.go(selectX, selectY);
+		Location location=new Location(area,new GridXY(selectX,selectY));
+		DefaultAbility ability = currentCondition.getAbility();
+		if(ability.canActivate(player, location)){   
+			ability.activate(player, location);
+		}
+		
 		return false;
 	}
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
+		int x,y;
+		touchPosition.set(screenX, screenY, 0);
+		mapCamera.unproject(touchPosition);
+		x=MathUtils.floor(touchPosition.x/16);
+		y=MathUtils.floor(touchPosition.y/16);
+		computeMouseState(x,y);
+		
+		
 		return false;
 	}
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
+		
 		return false;
+	}
+	//º∆À„ Û±Í◊¥Ã¨
+	public void computeMouseState(float x,float y){
+		Location location=new Location(area,new GridXY(x,y));
+		Condition conditon=MyGdxGame.mouseActionList.getDefalutMouseCondition(player, location);
+		currentCondition=conditon;
+		String cursor=MyGdxGame.mouseActionList.getMouseCursor(conditon);
+		Pixmap p=new Pixmap(Gdx.files.internal(cursor));
+		Gdx.input.setCursorImage(p, 0, 0);
 	}
 	private void handleInput() {
 		if (Gdx.input.isKeyPressed(Input.Keys.O)) {

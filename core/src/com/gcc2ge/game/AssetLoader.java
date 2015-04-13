@@ -1,8 +1,8 @@
 package com.gcc2ge.game;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -33,9 +33,10 @@ public class AssetLoader implements ApplicationListener {
 		
 		//load image
 	   for(ResourceLocation location:ResourceLocation.values()){
-		   Set<String> sortedSet=ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.PNG);
+		   Set<String> sortedSet=new LinkedHashSet<String>();
+		   sortedSet.addAll(ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.PNG));
 		   sortedSet.addAll(ResourceManager.getResourceInDirectoryByType(location.toString(),ResourceType.TMX));
-		   if(sortedSet==null)continue;
+		   if(sortedSet.size()==0)continue;
 		   for(String resource:sortedSet){
 			   manager.load(resource, FileExtension.valueOf(getExtendsion(resource)).getExtensionType());
 		   }

@@ -5,7 +5,7 @@ import com.gcc2ge.game.area.Portal;
 import com.gcc2ge.game.entity.Player;
 
 public class Travel implements DefaultAbility {
-
+	public Portal currentPortal;
 	@Override
 	public String getActionName() {
 		
@@ -14,8 +14,8 @@ public class Travel implements DefaultAbility {
 
 	@Override
 	public boolean canActivate(Player parent, Location target) {
-		Portal p=target.getPortal();
-		if(p!=null){
+		currentPortal=target.getPortal();
+		if(currentPortal!=null){
 			return true;
 		}
 		return false;
@@ -24,7 +24,7 @@ public class Travel implements DefaultAbility {
 	@Override
 	public void activate(Player parent, Location target) {
 		boolean needToMove=true;
-		if(target.getDistance(parent.positionX, parent.positionY)<=1){
+		if(target.getDistance(parent.positionX/16, parent.positionY/16)<=0){
 			needToMove=false;
 		}
 		if(needToMove){
@@ -32,8 +32,8 @@ public class Travel implements DefaultAbility {
 			parent.go((int)target.getX(), (int)target.getY());
 		}else{
 			//ÇÐ»»³¡¾°
-			parent.positionX=target.getX();
-			parent.positionY=target.getY();
+			parent.positionX=currentPortal.targetLocation.getX()*16;
+			parent.positionY=currentPortal.targetLocation.getY()*16;
 		}
 	}
 
@@ -50,10 +50,10 @@ public class Travel implements DefaultAbility {
 			this.target=target;
 		}
 		public void run(){
-			if(target.getDistance(parent.positionX, parent.positionY)<=1){
+			if(target.getDistance(parent.positionX/16, parent.positionY/16)<=0){
 				//ÇÐ»»³¡¾°
-				parent.positionX=target.getX();
-				parent.positionY=target.getY();
+				parent.positionX=currentPortal.targetLocation.getX()*16;
+				parent.positionY=currentPortal.targetLocation.getY()*16;
 			}
 		}
 	}

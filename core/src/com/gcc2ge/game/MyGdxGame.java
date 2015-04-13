@@ -15,6 +15,7 @@ public class MyGdxGame extends Game {
 	public static GroovyScriptEngineManager scriptEngineManager;
 	public static SpriteManager spriteManager;
 	public static AssetLoader loader=null;
+	public static MouseActionList mouseActionList;
 	private void init(){
 		ResourceManager.registerDesktopResource();
 		loader=new AssetLoader();
@@ -23,6 +24,7 @@ public class MyGdxGame extends Game {
 		this.scriptInterface=new ScriptInterface();
 		this.spriteManager = new SpriteManager();//加载动画 和 粒子
 		this.spriteManager.loadResource();
+		this.mouseActionList=new MouseActionList();
 	}
 	@Override
 	public void create() {

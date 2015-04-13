@@ -1,5 +1,6 @@
 package com.gcc2ge.game.entity;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Character extends Entity{
 	PathFinder pathFinder=null;
 	GridXY newDestination=null;
 	//路径完成回调
-	List<Runnable> finishMoveCallback;
+	List<Runnable> finishMoveCallback=new ArrayList<Runnable>();
 	//TransitionCallBack
 	TransitionCallBack callBack=new TransitionCallBack() {
 		

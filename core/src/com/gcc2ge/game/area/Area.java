@@ -12,7 +12,7 @@ import java.util.List;
 public class Area {
 	private final AreaEntityList entityList;
 	//´«ËÍÃÅ
-	private final List<Portal> portalList;
+	public final List<Portal> portalList;
 	
 	public Area(){
 		entityList=new AreaEntityList();
@@ -23,7 +23,8 @@ public class Area {
 	}
 	public Portal getPortal(float x,float y){
 		for(Portal p:portalList){
-			if(p.location.getX()==x && p.location.getY()==y)
+			Location location=p.fromLocation;
+			if(location.getX()==x && location.getY()==y)
 				return p;
 		}
 		return null;

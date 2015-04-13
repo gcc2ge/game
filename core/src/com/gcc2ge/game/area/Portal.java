@@ -6,9 +6,14 @@ package com.gcc2ge.game.area;
  */
 public class Portal {
 	//
-	Location location;
+	public Location fromLocation;//目标地点
+	public Location targetLocation;
 	public Portal(){}
-	public void setLocation(Location location){
-		this.location=location;
+	public void setFromLocation(Location location){
+		this.fromLocation=location;
 	}
+	public void setTargetLocation(Location location){
+		this.targetLocation=location;
+	}
+	
 }

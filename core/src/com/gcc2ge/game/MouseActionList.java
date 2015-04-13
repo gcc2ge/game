@@ -37,7 +37,7 @@ public class MouseActionList {
 		JsonValue map=JsonUtil.parse(file);
 		mouseCursors=new HashMap<MouseActionList.Condition, String>();
 		for(JsonValue entity=map.child();entity!=null;entity=entity.next()){
-			Condition condition=Condition.valueOf(entity.asString());
+			Condition condition=Condition.valueOf(entity.name);
 			mouseCursors.put(condition, entity.asString());
 		}
 		conditionsWithAbility = new ArrayList<Condition>();
