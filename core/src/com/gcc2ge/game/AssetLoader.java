@@ -42,7 +42,7 @@ public class AssetLoader implements ApplicationListener {
 		   }
 	   }
 		manager.finishLoading();
-		Gdx.app.log(TAG, "资源加载完成");
+		Gdx.app.log(TAG, "璧勬簮鍔犺浇瀹屾垚");
 		map=manager.get("maps/map.tmx");
 		//get
 		Set<String> mouse=ResourceManager.getResourceInDirectoryByType("img", ResourceType.PNG);

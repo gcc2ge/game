@@ -6,7 +6,7 @@ import java.util.TreeSet;
 import com.badlogic.gdx.files.FileHandle;
 
 /**
- * 使用libgdx 自带的file管理资源
+ * 浣跨敤libgdx 鑷甫鐨刦ile绠＄悊璧勬簮
  * @author Administrator
  *
  */

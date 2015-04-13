@@ -35,7 +35,7 @@ public class GridCartographer implements Cartographer {
 		PointXY pointXY=(PointXY)node;
 		adjcentList.clear()	;
 		float distanceToGoal=pointXY.distanceXY(goalPointXY);//estimate
-		///////ÒÔÇ°µãÏàÁÚ½Úµã»áÍ¨¹ı£¬ÒòÎªÃ»ÅĞ¶ÏÄ¿±ê½ÚµãÊÇ·ñ¿ÉÒÔÍ¨¹ı
+		///////ä»¥å‰ç‚¹ç›¸é‚»èŠ‚ç‚¹ä¼šé€šè¿‡ï¼Œå› ä¸ºæ²¡åˆ¤æ–­ç›®æ ‡èŠ‚ç‚¹æ˜¯å¦å¯ä»¥é€šè¿‡
 		if(distanceToGoal<=stepSize && spaceTester.isSpaceAvailable(goalPointXY)){
 			adjcentList.add(goalPointXY);
 			return adjcentList.iterator();
@@ -44,7 +44,7 @@ public class GridCartographer implements Cartographer {
 		float y=pointXY.getY();
 		for(int ix=-1;ix<2;ix++){
 			for(int iy=-1;iy<2;iy++){
-				//(iy==1&& ix==-1) ÒÔÇ°Ğ´´íÒ»¸öÅĞ¶Ï
+				//(iy==1&& ix==-1) ä»¥å‰å†™é”™ä¸€ä¸ªåˆ¤æ–­
 				if((iy==0&& ix==0) ||(iy==-1&& ix==-1)||(iy==1&& ix==1)||(iy==-1&& ix==1)||(iy==1&& ix==-1)){
 					continue;
 				}

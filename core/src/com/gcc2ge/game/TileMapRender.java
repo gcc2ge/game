@@ -17,7 +17,7 @@ import com.gcc2ge.game.animation.AnimationTile;
 /**
  * 
  * @author Administrator
- *	OrthogonalTiledMapRenderer 的代理类
+ *	OrthogonalTiledMapRenderer 鐨勪唬鐞嗙被
  */
 public class TileMapRender {
 	OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;

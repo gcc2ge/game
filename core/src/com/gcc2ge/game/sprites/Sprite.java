@@ -13,14 +13,14 @@ import com.gcc2ge.game.entity.State;
 /**
  * 
  * @author Administrator
- *	sprite json 配置数据
+ *	sprite json 閰嶇疆鏁版嵁
  */
 public class Sprite {
-	String id;//动画 图片 名称
+	String id;//鍔ㄧ敾 鍥剧墖 鍚嶇О
 	String name;
 	int offsetX,offsetY;
 	int width,height;
-	//人物
+	//浜虹墿
 	Map<String,AnimationEntity> animations=new HashMap<String ,AnimationEntity>();
 	public Sprite(){
 		

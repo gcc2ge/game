@@ -24,7 +24,7 @@ public class Scriptable {
 			try {
 				engine.eval(script);
 			} catch (ScriptException e) {
-				Gdx.app.log(TAG, "½Å±¾½âÎö³ö´í £¡ ÎÄ¼şµØÖ·"+scriptLocation);
+				Gdx.app.log(TAG, "è„šæœ¬è§£æå‡ºé”™ ï¼ æ–‡ä»¶åœ°å€"+scriptLocation);
 			}
 //			for(ScriptFunctionType type:ScriptFunctionType.values()){
 //				if(engine.hasFunction(type.toString())){

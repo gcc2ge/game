@@ -59,7 +59,7 @@ public class GameScreen implements Screen ,InputProcessor{
 		batch = new SpriteBatch();
 		mapRenderer=new TileMapRender(MyGdxGame.loader.map,batch);
 		mapCamera=new OrthographicCamera(w/PIX_PER_MERTER,h/PIX_PER_MERTER);
-		//×¢²áÊÂ¼ş
+		//æ³¨å†Œäº‹ä»¶
 		InputMultiplexer m=new InputMultiplexer(this,new AreaListener()); 
 		Gdx.input.setInputProcessor(m);
 		shapeRender=new ShapeRenderer();
@@ -204,7 +204,7 @@ public class GameScreen implements Screen ,InputProcessor{
 		
 		return false;
 	}
-	//¼ÆËãÊó±ê×´Ì¬
+	//è®¡ç®—é¼ æ ‡çŠ¶æ€
 	public void computeMouseState(float x,float y){
 		Location location=new Location(area,new GridXY(x,y));
 		Condition conditon=MyGdxGame.mouseActionList.getDefalutMouseCondition(player, location);

@@ -15,14 +15,14 @@ import com.gcc2ge.game.sprites.SpriteManager;
 /**
  * 
  * @author Administrator
- * 主要用户显示
+ * 涓昏鐢ㄦ埛鏄剧ず
  */
 public class Entity {
 	final int TILEWIDTH=16;
 	final int TILEHEIGHT=16;
 	public float positionX=(Gdx.graphics.getWidth()/TILEWIDTH)*TILEWIDTH,positionY=(Gdx.graphics.getHeight()/TILEHEIGHT)*TILEHEIGHT;
 
-	//人物 动画  
+	//浜虹墿 鍔ㄧ敾  
 	Map<String,AnimationEntity> animations;
 	int x,y;
 	

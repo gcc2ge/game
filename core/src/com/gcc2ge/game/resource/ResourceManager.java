@@ -13,7 +13,7 @@ import com.badlogic.gdx.files.FileHandle;
 
 public class ResourceManager {
 	private static List<ResourcePackage> resources=new ArrayList<ResourcePackage>();
-	//½Å±¾»º´æ
+	//è„šæœ¬ç¼“å­˜
 	private static Map<String, String> cachedFiles = new HashMap<String, String>();
 	
 	public static void registerDesktopResource(){

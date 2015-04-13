@@ -37,7 +37,7 @@ public class Location {
 	//get current position entity
 	public Portal getPortal(){
 		if(area==null)
-			throw new UnsupportedOperationException("Area ²»´æÔÚ");
+			throw new UnsupportedOperationException("Area ä¸å­˜åœ¨");
 		return area.getPortal(x, y);
 	}
 }

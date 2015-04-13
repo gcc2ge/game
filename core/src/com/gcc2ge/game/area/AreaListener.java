@@ -44,7 +44,7 @@ public class AreaListener implements InputProcessor{
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		//×ª»»×ø±ê
+		//è½¬æ¢åæ ‡
 		
 //		Pixmap p=new Pixmap(Gdx.files.internal("img/mouse/hand.png"));
 //		Gdx.input.setCursorImage(p, 0, 0);

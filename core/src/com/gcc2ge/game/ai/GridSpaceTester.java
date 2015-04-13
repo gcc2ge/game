@@ -3,7 +3,7 @@ package com.gcc2ge.game.ai;
 import com.gcc2ge.game.MapProcess;
 
 /**
- * ²âÊÔÕÏ°­Îï
+ * æµ‹è¯•éšœç¢ç‰©
  * @author Administrator
  *
  */

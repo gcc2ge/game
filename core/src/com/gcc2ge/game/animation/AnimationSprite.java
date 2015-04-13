@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * animation 的代理类
+ * animation 鐨勪唬鐞嗙被
  * @author Administrator
  *
  */

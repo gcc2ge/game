@@ -31,7 +31,7 @@ public class Travel implements DefaultAbility {
 			parent.addFinishMoveCallBack(new TravelCallBack(parent, target));
 			parent.go((int)target.getX(), (int)target.getY());
 		}else{
-			//ÇĞ»»³¡¾°
+			//åˆ‡æ¢åœºæ™¯
 			parent.positionX=currentPortal.targetLocation.getX()*16;
 			parent.positionY=currentPortal.targetLocation.getY()*16;
 		}
@@ -51,7 +51,7 @@ public class Travel implements DefaultAbility {
 		}
 		public void run(){
 			if(target.getDistance(parent.positionX/16, parent.positionY/16)<=0){
-				//ÇĞ»»³¡¾°
+				//åˆ‡æ¢åœºæ™¯
 				parent.positionX=currentPortal.targetLocation.getX()*16;
 				parent.positionY=currentPortal.targetLocation.getY()*16;
 			}

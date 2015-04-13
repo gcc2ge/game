@@ -68,9 +68,9 @@ public class MapProcess {
 					}
 					animationConfig.id=tileId;
 					animationConfig.delay=Integer.parseInt(value.toString())*0.001f;
-				}else if(key.equalsIgnoreCase("c")){//碰撞
+				}else if(key.equalsIgnoreCase("c")){//纰版挒
 					collideArray.add(tileId);
-				}else if(key.equalsIgnoreCase("v")){//深度 
+				}else if(key.equalsIgnoreCase("v")){//娣卞害 
 					highArray.add(tileId);
 				}
 			}
@@ -104,7 +104,7 @@ public class MapProcess {
 			Location fromLocation=new Location(area,new GridXY(rectangle.x/16, rectangle.y/16));
 			Portal portal=new Portal();
 			int heightTile=314;
-			Location targetLocation=new Location(area, new GridXY(Integer.valueOf(x.toString()),heightTile-Integer.valueOf(y.toString())-1));//坐标转换，tileMap object 坐标为左上角 libgdx 坐标为笛卡尔坐标
+			Location targetLocation=new Location(area, new GridXY(Integer.valueOf(x.toString()),heightTile-Integer.valueOf(y.toString())-1));//鍧愭爣杞崲锛宼ileMap object 鍧愭爣涓哄乏涓婅 libgdx 鍧愭爣涓虹瑳鍗″皵鍧愭爣
 			portal.setTargetLocation(targetLocation);
 			portal.setFromLocation(fromLocation);
 			area.addPortal(portal);

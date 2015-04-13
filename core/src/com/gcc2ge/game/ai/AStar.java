@@ -42,7 +42,7 @@ public class AStar {
 		while(nodeInfo!=null){
 			NodeInfo parentNodeInfo=nodeInfo.getParentNodeInfo();
 			if(parentNodeInfo!=null){
-				pathList.add(0, nodeInfo.getNode());//µ¹Ğò²åÈë
+				pathList.add(0, nodeInfo.getNode());//å€’åºæ’å…¥
 			}
 			nodeInfo=parentNodeInfo;
 		}
@@ -79,15 +79,15 @@ public class AStar {
 	}
 	/**
 	 * 
-	 * openNodeInfoSortedList ´¦Àí ¿´·ñÄ¿±ê½Úµã Ìí¼ÓÏàÁÚ½Úµã
+	 * openNodeInfoSortedList å¤„ç† çœ‹å¦ç›®æ ‡èŠ‚ç‚¹ æ·»åŠ ç›¸é‚»èŠ‚ç‚¹
 	 	
-	 	adjacentNode  ¼ÆËãcostFromStart  totalCost
-	 	Èç¹ûÏàÁÚ½ÚµãÒÑ±»¼ÆËã¹ı cost Ôò±È½ÏÁ½¸öÂ·¾¢µÄ costFromStart Ñ¡È¡×îĞ¡µÄ
+	 	adjacentNode  è®¡ç®—costFromStart  totalCost
+	 	å¦‚æœç›¸é‚»èŠ‚ç‚¹å·²è¢«è®¡ç®—è¿‡ cost åˆ™æ¯”è¾ƒä¸¤ä¸ªè·¯åŠ²çš„ costFromStart é€‰å–æœ€å°çš„
 	 *
 	 *
 	 */
 	public boolean loop(){
-		if(openNodeInfoSortedList.isEmpty()){//Ã»ÓĞµ½´ïÂ·¾¶
+		if(openNodeInfoSortedList.isEmpty()){//æ²¡æœ‰åˆ°è¾¾è·¯å¾„
 			listEmpty=true;
 			return false;
 		}
@@ -111,7 +111,7 @@ public class AStar {
 			}else if(adjacentNodeInfo.getCostFromStart()<newCostFromStart){
 				continue;
 			}
-			//¸üĞÂ ×îĞ¡»¨·Ñ
+			//æ›´æ–° æœ€å°èŠ±è´¹
 			adjacentNodeInfo.setParentNodeInof(nodeInfo);
 			adjacentNodeInfo.setCostFromStart(newCostFromStart);
 			double totalCost=newCostFromStart+cartographer.estimateCostTotal(adjacentNode);

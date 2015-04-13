@@ -26,7 +26,7 @@ public class Character extends Entity{
 	Iterator path=null;
 	PathFinder pathFinder=null;
 	GridXY newDestination=null;
-	//Â·¾¶Íê³É»Øµ÷
+	//è·¯å¾„å®Œæˆå›è°ƒ
 	List<Runnable> finishMoveCallback=new ArrayList<Runnable>();
 	//TransitionCallBack
 	TransitionCallBack callBack=new TransitionCallBack() {
@@ -46,13 +46,13 @@ public class Character extends Entity{
 		@Override
 		public void onEnd(float value,Oriention direction) {
 			updatePosition(value,direction);
-			//¸ü»»ĞÂµÄÂ·¾¶
+			//æ›´æ¢æ–°çš„è·¯å¾„
 			if(newDestination!=null){
 				Character.this.moveTo((int)newDestination.getX(), (int)newDestination.getY());
 			}else{
-				if(path!=null && path.hasNext()){//Â·¾¶ÎªÈ«²¿Íê³É£¬¼ÌĞøÖ´ĞĞÏÂÒ»¸öÂ·¾¶
+				if(path!=null && path.hasNext()){//è·¯å¾„ä¸ºå…¨éƒ¨å®Œæˆï¼Œç»§ç»­æ‰§è¡Œä¸‹ä¸€ä¸ªè·¯å¾„
 					Character.this.nextStep();
-				}else{//Â·¾¶Ö´ĞĞÍê³É
+				}else{//è·¯å¾„æ‰§è¡Œå®Œæˆ
 					Character.this.state=State.IDLE;
 					if(finishMoveCallback!=null){
 						for(Runnable run:finishMoveCallback){
@@ -71,27 +71,27 @@ public class Character extends Entity{
 	
 	public void go(int x,int y){
 		//do something
-		if(path!=null && path.hasNext()){//ÕıÔÚÒÆ¶¯ ¹ı³ÌÖĞ¸Ä±ä×´Ì¬
+		if(path!=null && path.hasNext()){//æ­£åœ¨ç§»åŠ¨ è¿‡ç¨‹ä¸­æ”¹å˜çŠ¶æ€
 			changeCurrentMove(x,y);
 		}else{
 			moveTo(x,y);
 		}
 	}
-	//¸Ä±äÒÆ¶¯
+	//æ”¹å˜ç§»åŠ¨
 	public void changeCurrentMove(int x,int y){
 		newDestination=new GridXY(x,y);
 		if(finishMoveCallback!=null){
 			finishMoveCallback.clear();
 		}
 	}
-	//È¡Ïûµ±Ç°ÒÆ¶¯
+	//å–æ¶ˆå½“å‰ç§»åŠ¨
 	public void cancelCurrentMove(){
 		path=null;
 		if(finishMoveCallback!=null){
 			finishMoveCallback.clear();
 		}
 	}
-	//×¢²áÒÆ¶¯Íê³É»Øµ÷
+	//æ³¨å†Œç§»åŠ¨å®Œæˆå›è°ƒ
 	public void addFinishMoveCallBack(Runnable run){
 		finishMoveCallback.add(run);
 	}
@@ -128,7 +128,7 @@ public class Character extends Entity{
 			}
 		}
 	}
-	//¸üĞÂ×ø±ê
+	//æ›´æ–°åæ ‡
 	public void updatePosition(float value,Oriention oriention){
 		switch(oriention){
 			case LEFT:
@@ -147,7 +147,7 @@ public class Character extends Entity{
 		Gdx.app.log(TAG, "["+this.positionX+","+this.positionY+"]");
 	}
 	/**
-	 * ¸Ä±ä·½Ïò
+	 * æ”¹å˜æ–¹å‘
 	 * @param target
 	 */
 	public void changeDirection(GridXY target){
@@ -159,7 +159,7 @@ public class Character extends Entity{
 		Gdx.app.log(TAG, "oriention "+this.oriention);
 	}
 	/**
-	 * ¶¯»­
+	 * åŠ¨ç”»
 	 */
 	public void walk(){
 		Animation aa=MyGdxGame.spriteManager.getAnimation("ogre_walk_"+this.oriention);
@@ -189,7 +189,7 @@ public class Character extends Entity{
 		}
 	}
 	/**
-	 * game loop µ÷ÓÃ
+	 * game loop è°ƒç”¨
 	 */
 	public void update(){
 		animation();

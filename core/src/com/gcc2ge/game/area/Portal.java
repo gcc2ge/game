@@ -1,12 +1,12 @@
 package com.gcc2ge.game.area;
 /**
- * ´«ËÍÈë¿Ú
+ * ä¼ é€å…¥å£
  * @author gcc2ge
  *
  */
 public class Portal {
 	//
-	public Location fromLocation;//Ä¿±êµØµã
+	public Location fromLocation;//ç›®æ ‡åœ°ç‚¹
 	public Location targetLocation;
 	public Portal(){}
 	public void setFromLocation(Location location){

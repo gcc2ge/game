@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 /**
- * Â·¾¶Ñ°ÕÒ
+ * è·¯å¾„å¯»æ‰¾
  * @author Administrator
  *
  */

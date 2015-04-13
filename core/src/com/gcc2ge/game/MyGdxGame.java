@@ -22,15 +22,15 @@ public class MyGdxGame extends Game {
 		loader.create();
 		this.scriptEngineManager=new GroovyScriptEngineManager();
 		this.scriptInterface=new ScriptInterface();
-		this.spriteManager = new SpriteManager();//¼ÓÔØ¶¯»­ ºÍ Á£×Ó
+		this.spriteManager = new SpriteManager();//åŠ è½½åŠ¨ç”» å’Œ ç²’å­
 		this.spriteManager.loadResource();
 		this.mouseActionList=new MouseActionList();
 	}
 	@Override
 	public void create() {
-		//³õÊ¼»¯×ÊÔ´
+		//åˆå§‹åŒ–èµ„æº
 		init();
-		Gdx.app.setLogLevel(Application.LOG_NONE);//¿ª¹ØÈÕÖ¾
+		Gdx.app.setLogLevel(Application.LOG_NONE);//å¼€å…³æ—¥å¿—
 		setScreen(new GameScreen(this));;
 	}
 

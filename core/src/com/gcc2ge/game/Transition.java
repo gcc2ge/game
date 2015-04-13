@@ -3,7 +3,7 @@ package com.gcc2ge.game;
 import com.badlogic.gdx.Gdx;
 import com.gcc2ge.game.entity.Oriention;
 /**
- * Ò»¸öÂ·¾¶Ö´ÐÐ¹¦ÄÜ
+ * ä¸€ä¸ªè·¯å¾„æ‰§è¡ŒåŠŸèƒ½
  * @author gcc2ge
  *
  */

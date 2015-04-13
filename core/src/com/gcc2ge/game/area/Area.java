@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * µØÍ¼ÉÏÊµÌå£¬´«ËÍÃÅ µÈ ½øĞĞ¹ÜÀí
- * Ë¢¹Ö
+ * åœ°å›¾ä¸Šå®ä½“ï¼Œä¼ é€é—¨ ç­‰ è¿›è¡Œç®¡ç†
+ * åˆ·æ€ª
  * @author gcc2ge
  *
  */
 public class Area {
 	private final AreaEntityList entityList;
-	//´«ËÍÃÅ
+	//ä¼ é€é—¨
 	public final List<Portal> portalList;
 	
 	public Area(){

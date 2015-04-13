@@ -33,12 +33,12 @@ public class SpriteManager {
 		return null;
 	}
 	/**
-	 * ¶¯»­ÓëÁ£×Ó
+	 * åŠ¨ç”»ä¸ç²’å­
 	 */
 	public void loadResource(){
-		//Á£×Ó
+		//ç²’å­
 		
-		//¶¯»­
+		//åŠ¨ç”»
 		Set<String> resources=ResourceManager.getResourceInDirectory("scripts/animations");
 		for(String resource:resources){
 			loadAnimation(resource);
@@ -51,7 +51,7 @@ public class SpriteManager {
 		try {
 			animation=(Map<String,Animation>) engine.eval(ResourceManager.getResourceAsString(resource));
 		} catch (ScriptException e) {
-			Gdx.app.log(TAG, "ÔØÈë¶¯»­³ö´í: "+resource);
+			Gdx.app.log(TAG, "è½½å…¥åŠ¨ç”»å‡ºé”™: "+resource);
 			e.printStackTrace();
 		}
 		if(animation!=null){
